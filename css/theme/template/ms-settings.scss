@@ -1,24 +1,24 @@
 // Base settings for all themes that can optionally be
 // overridden by the super-theme
 
-// Background of the presentation
-$backgroundColor: #333;
-$backgroundImage: ""; //url("backgrounds/space.jpg")
-
 // Primary/body text
-$mainFont: 'RobotoDraft', sans-serif;
-$secondaryFont: 'Rokkitt', serif;
+$mainFont: 'Roboto', sans-serif;
+$secondaryFont: 'Patua One', serif;
 $codeFont: Menlo, monospace;
 $mainFontSize: 3.5rem;
 $darkColor: #333;
 $transparentBlack: rgba(0, 0, 0, 0.85);
-$mainColor: #fff;
-$headingColor: #fff;
+$white: #fff;
+$mainColor: $white;
+$headingColor: $mainColor;
 $secondaryColor: #999;
 $tertiaryColor: rgb(236, 255, 5);
 $mutedColor: #999;
-$white: #fff;
 $alertColor: #ff0000;
+
+// Background of the presentation
+$backgroundColor: $darkColor;
+$backgroundImage: ""; //url("backgrounds/space.jpg")
 
 // Headings
 $headingMargin: 0 0 20px 0;
@@ -33,18 +33,18 @@ $paragraphFontSize: 2em;
 $paragraphLineHeight: 1.25em;
 
 // Links and actions
-$linkColor: #56FFF9;
-$linkColorHover: #fff;
+$linkColor: $tertiaryColor;
+$linkColorHover: $mainColor;
 $altLinkColor: #55491F;
 $buttonColor: #4285f4;
-$buttonTextColor: $white;
+$buttonTextColor: $mainColor;
 
-$separatorColor: transparentize(#000000, 0.88);
-$separatorHeight: 5px;
+$separatorColor: $mainColor;
+$separatorHeight: 3px;
 
 // Text selection
 $selectionBackgroundColor: #97948f;
-$selectionColor: $white;
+$selectionColor: $mainColor;
 
 // Generates the presentation background, can be overridden
 // to return a background image or gradient

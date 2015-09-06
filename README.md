@@ -1,12 +1,9 @@
-#Mobile Accessibility 101
-[http://marcysutton.github.io/mobile-a11y/](http://marcysutton.github.io/mobile-a11y/)
+#Empathy - Creative Mornings
+[http://marcysutton.github.io/creative-mornings-empathy/](http://marcysutton.github.io/creative-mornings-empathy/)
 
 By [Marcy Sutton](http://marcysutton.com)<br>
 Accessibility Engineer at Adobe<br>
 twitter: [@marcysutton](http://twitter.com/marcysutton)
-
-##Presented at:
-* Open Web Camp 2015
 
 ## Installation
 
@@ -21,7 +18,7 @@ Some reveal.js features require that presentations run from a local web server. 
 
 4. Clone the reveal.js repository
 ```
-$ git clone git@github.com:hakimel/reveal.js.git
+$ git clone git@github.com:marcysutton/creative-mornings-empathy.git
 ```
 
 5. Navigate to the reveal.js folder

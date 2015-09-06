@@ -150,10 +150,11 @@
 
 body {
   background-color: $backgroundColor;
-  background-image: $backgroundImage;
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: cover;
+  // background-image: $backgroundImage;
+  // background-repeat: repeat;
+  // background-position: center top;
+  // background-size: cover;
+  font-family: $mainFont;
 }
 
 .reveal {
@@ -161,6 +162,10 @@ body {
 	font-size: $mainFontSize;
 	font-weight: 200;
 	color: $mainColor;
+
+  .clear-background & {
+    background-color: transparent;
+  }
 
   iframe {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
@@ -273,7 +278,7 @@ body {
  * HEADERS
  *********************************************/
 .reveal {
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, .h2-style {
     color: $headingColor;
   	font-family: $headingFont;
     font-weight: $headingFontWeight;
@@ -288,20 +293,20 @@ body {
     line-height: 1.5;
   }
   h1, h2.h1-style, h3.h1-style, h4.h1-style {
-    font-size: 4.5em;
+    font-size: 4em;
   }
   h2,
   h1.h2-style,
   h3.h2-style,
   h4.h2-style,
   p.h2-style {
-    font-size: 3.5em;
+    font-size: 2.8em;
   }
   h3,
   h2.h3-style,
   h4.h3-style,
   p.h3-style {
-    font-size: 2.25em;
+    font-size: 2em;
   }
   h4, h2.h4-style,
   h3.h4-style,
@@ -313,10 +318,15 @@ body {
   h3 strong {
     color: $linkColor;
   }
-  .giant {
-    color: $tertiaryColor !important;
-    font-size: 6em;
+  .shadow {
     text-shadow: 4px 4px 8px #000 !important;
+  }
+  .giant {
+    &.highlight {
+      color: $tertiaryColor !important;
+    }
+    @extend .shadow;
+    font-size: 3em;
   }
   small {
     font-size: 0.85em;
@@ -537,7 +547,7 @@ body {
       margin-bottom: 0.25em;
     }
     &.smaller {
-      font-size: 1.75em;
+      font-size: 1.25em;
 
       li {
         letter-spacing: 0;
@@ -548,6 +558,16 @@ body {
     &.smallest li {
       font-size: 0.75em;
       letter-spacing: 0;
+    }
+    &.bulleted {
+      text-align: left;
+      list-style: disc;
+      max-width: 80%; 
+      margin: 0 auto;
+
+      li {
+        margin-bottom: 0.75em;
+      }
     }
   }
 }
@@ -566,9 +586,12 @@ body {
   	     -o-transition: all .5s;
   	        transition: all .5s;
   }
-	// a:not(.image):hover, a:not(.image):focus {
- //    border: 2px dotted currentColor;
-	// }
+  a.invert {
+    color: $altLinkColor;
+  }
+	a:not(.image):hover, a:not(.image):focus {
+    color: $tertiaryColor;
+	}
 
   .roll span:after {
   	color: $white;
@@ -637,39 +660,39 @@ body {
 .reveal .controls {
   bottom: 30px;
 }
-.reveal .controls div.navigate-left,
-.reveal .controls div.navigate-left.enabled {
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
 	border-right-color: $linkColor;
 }
 
-.reveal .controls div.navigate-right,
-.reveal .controls div.navigate-right.enabled {
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
 	border-left-color: $linkColor;
 }
 
-.reveal .controls div.navigate-up,
-.reveal .controls div.navigate-up.enabled {
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
 	border-bottom-color: $linkColor;
 }
 
-.reveal .controls div.navigate-down,
-.reveal .controls div.navigate-down.enabled {
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
 	border-top-color: $linkColor;
 }
 
-.reveal .controls div.navigate-left.enabled:hover {
+.reveal .controls .navigate-left.enabled:hover {
 	border-right-color: $linkColorHover;
 }
 
-.reveal .controls div.navigate-right.enabled:hover {
+.reveal .controls .navigate-right.enabled:hover {
 	border-left-color: $linkColorHover;
 }
 
-.reveal .controls div.navigate-up.enabled:hover {
+.reveal .controls .navigate-up.enabled:hover {
 	border-bottom-color: $linkColorHover;
 }
 
-.reveal .controls div.navigate-down.enabled:hover {
+.reveal .controls .navigate-down.enabled:hover {
 	border-top-color: $linkColorHover;
 }
 
@@ -717,7 +740,11 @@ body {
       text-shadow: none;
     }
     a {
-      color: $altLinkColor;
+      color: $backgroundColor;
+
+      &:hover, &:focus {
+        color: $altLinkColor;
+      }
     }
     .layeredFragments > div {
       background-color: $mainColor;
@@ -729,11 +756,12 @@ body {
  *********************************************/
 
 .reveal .progress {
-	background: transparentize($headingColor, 0.5);
+	background: transparentize(#333, 0.1);
   height: 10px;
+  z-index: 12;
 }
 	.reveal .progress span {
-		background: $headingColor;
+		background: $linkColor;
 
 		-webkit-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
 		   -moz-transition: width 800ms cubic-bezier(0.260, 0.860, 0.440, 0.985);
@@ -818,11 +846,13 @@ body {
       text-align: center; 
       width: 100%;
     }
-    img {
+    img, iframe {
       display: block;
       min-height: 500px;
       max-height: 600px;
       margin: 0 auto;
+    }
+    img {
       width: auto;
     }
   }
@@ -1043,6 +1073,9 @@ body {
       width: 100%;
     }
   }
+  .inverted {
+    color: $darkColor;
+  }
   .centered {
     margin: auto;
     text-align: left;
@@ -1055,7 +1088,7 @@ body {
     $circleWidth: .2em;
 
     &:after {
-      border: $circleWidth solid darken($tertiaryColor, 5%);
+      border: $circleWidth solid darken($tertiaryColor, 7%);
       border-top: none;
       border-radius: 1.5em 1em 2em 1.5em;
       bottom: -.3em;
@@ -1066,7 +1099,7 @@ body {
       top: -.1em;
     }
     &:before {
-      border-top: $circleWidth solid darken($tertiaryColor, 5%);
+      border-top: $circleWidth solid darken($tertiaryColor, 7%);
       border-radius: .5em;
       content: '';
       height: 1em;
@@ -1084,9 +1117,13 @@ body {
     margin-top: 8%;
 
     &.circled:before {
+      border-color: #ff3300;
       top: -.13em;
       transform: rotate(-1deg);
       width: 8.5em;
+    }
+    &.circled:after {
+      border-color: #ff3300;
     }
   }
 }
