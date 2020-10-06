@@ -1,0 +1,56 @@
+// Base settings for all themes that can optionally be
+// overridden by the super-theme
+
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700,900i');
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+// Background of the presentation
+$backgroundColor: #2b2b2b;
+
+// Primary/body text
+$mainFontSize: 38px;
+$mainColor: #222;
+$headingColor: #222;
+$codeBgColor: #fff;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Merriweather', serif;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: 700;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+// Links and actions
+$linkColor: #032554;
+$linkColorHover: lighten( $linkColor, 25% );
+$linkUnderline: underline;
+
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+$selectionColor: #fff;
+
+$blockBackgroundColor: rgba(255, 255, 255, 0.8);
+$blockBoxShadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+$blockPadding: 15px 5px;
+$blockTextColor: #000;
+
+$tablet: 'screen and (max-width: 1024px)';
+$mobile: 'screen and (max-width: 600px)';
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}

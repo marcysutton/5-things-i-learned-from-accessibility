@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>5 Things I've Learned From the Accessibility Community - Marcy Sutton</title>
+
+		<meta name="description" content="A presentation on  accessible web development">
+		<meta name="author" content="Marcy Sutton">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<link rel="stylesheet" href="plugin/accessibility-helpers/accessibility-helper.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/tomorrow.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section class="title-slide">
+					<h1>5 Things I’ve Learned From the Accessibility Community</h1>
+					<p>
+						By <a href="http://marcysutton.com">Marcy Sutton</a> / <a href="http://twitter.com/marcysutton">@marcysutton</a><br>
+						Freelance Web Developer & Accessibility Specialist
+					</p>
+				</section>
+
+				<section data-background-color="#fff" data-transition="none">
+					<h2>Who is Marcy Sutton?</h2>
+					<div id="oh-hai-images">
+						<div>
+							<img data-src="img/axe-core.png" alt="axe-core" class="axe plain">
+							<img src="img/web-a11y-slack.jpg" alt="Web-A11y Slack" class="slack plain">
+						</div>
+						<div>
+							<img data-src="img/egghead-dot-io-logo.png" alt="Egghead.io" class="egghead plain">
+							<img data-src="img/gatsby-icon.png" alt="Gatsby" class="gatsby plain">
+						</div>
+						<img data-src="img/a11y-octopus--purple.png" alt="Accessibility Seattle Octopus" class="a11ysea plain">
+					</div>
+				</section>
+
+				<section data-background-image="img/piepacking.jpg">
+					<h2 class="offscreen">Sunrise in the mountains with a container of homemade berry pie</h2>
+				</section>
+
+				<section data-background-image="img/uphill-conf.jpg">
+					<h2 class="offscreen">Marcy presenting Empathy Driven Development at Uphill Conf in Switzerland, with a split screen for her VS Code "slides" and the conference sponsors</h2>
+				</section>
+
+				<section>
+					<p class="subhead"><span aria-hidden="true">✨</span> <strong>New!</strong> <span aria-hidden="true">✨</span></p>
+					<h2>Modern Sole Design, LLC</h2>
+					<h3 class="h4-style subhead">You can consult with me for:</h3>
+					<ul>
+						<li>Accessibility design reviews</li>
+						<li>UI Prototyping & Engineering</li>
+						<li>Manual and automated testing</li>
+						<li>Documentation</li>
+						<li>Talks / break & learns</li>
+						<li>Workshops & training</li>
+						<li>Office hours</li>
+					</ul>
+					<p><a href="https://marcysutton.com/contact/">https://marcysutton.com/contact/</a></p>
+				</section>
+
+				<section>
+					<h2 class="h1-style">TODAY</h2>
+					<ol class="larger">
+						<li>Disability and Accessibility Communities</li>
+						<li>Laws and Guidelines</li>
+						<li>Working in Accessibility and the Mainstream</li>
+						<li>Testing often for user impact</li>
+						<li>Accessible doesn’t mean boring</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2 class="h1-style">Why do you care about accessibility?</h2>
+				</section>
+
+				<section data-background-image="img/diversity.jpg">
+					<h2 class="h1-style" style="margin-top: -3.25em; padding-left: 56%; text-align:right;width: 50%;">I care about people.</h2>
+				</section>
+
+				<section>
+					<blockquote><h2 class="h1-style">In the US,<br> 1 in 4 adults<br>has some type of disability.</h2><cite>- Statistics published by the <br><a href="https://www.cdc.gov/ncbddd/disabilityandhealth/infographic-disability-impacts-all.html">Centers for Disease Control and Prevention</a></cite></blockquote>
+				</section>
+
+				<section>
+					<h2 class="h1-style"><span class="subhead" style="line-height: 0.7;">The</span>Disability Spectrum</h2>
+					<p>Including, and not limited to:</p>
+					<ul class="larger list-icons">
+						<li class="li-cognitive">
+							<svg class="icon"><use xlink:href="img/icons.svg#icon-cognitive"></use></svg>
+							<span><strong>Cognitive:</strong> Autism, TBI, learning</span>
+						</li>
+						<li class="li-hearing">
+							<svg class="icon"><use xlink:href="img/icons.svg#icon-hearing"></use></svg>
+							<span><strong>Hearing:</strong> Deafness, hearing loss</span>
+						</li>
+						<li class="li-physical">
+							<svg class="icon"><use xlink:href="img/icons.svg#icon-physical"></use></svg>
+							<span><strong>Motor:</strong> Spinal cord injury, Cerebral Palsy, ALS</span>
+						</li>
+						<li class="li-vision">
+							<svg class="icon"><use xlink:href="img/icons.svg#icon-vision"></use></svg>
+							<span><strong>Vision:</strong> low-vision, blindness, color perception</span>
+						</li>
+					</ul>
+					<div style="width: 100%;"><small style="display: block;">Icons by the Noun Project <a href="https://thenounproject.com/search/?q=handicap&i=51145">1</a>, <a href="https://thenounproject.com/search/?q=vision&i=822777">2</a>, <a href="https://thenounproject.com/search/?q=hearing&i=21603">3</a>, <a href="https://thenounproject.com/search/?q=cognitive&i=254234">4</a></small></div>
+				</section>
+
+				<section>
+					<h2>Your life could change at any time.</h2>
+					<img data-src="img/injury.png" alt="Spectrum of disability from permanent to situational" style="max-height: 400px;">
+					<p class="subhead"><strong>Microsoft Inclusive Design Toolkit</strong><br>
+					<a href="http://bit.ly/microsoft-inclusive-toolkit">http://bit.ly/microsoft-inclusive-toolkit</a></p>
+				</section>
+
+				<!--<section>
+				<iframe title="Web Accessibility Perspectives: Keyboard Compatibility" width="1280" height="720" data-src="https://www.youtube-nocookie.com/embed/93UgG72os8M?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+				</section>-->
+
+				<section>
+					<h2 class="h1-style">1. Disability and accessibility communities are not always the same</h2>
+				</section>
+
+				<section data-background-image="img/tweet-matt-may.png" data-background-size="70% auto" data-background-color="#fff" data-background-position="top center">
+					<h2 class="offscreen"><a href="https://twitter.com/mattmay/status/1117786388760371200">Tweet from Matt May</a> that reads: "Accessibility pro tip:
+						If your timeline is not flooded with "Bran has a wheelchair!" tweets, you are following accessibility Twitter and not disability Twitter. Consider branching out.
+						
+						(Or possibly your friends don't watch GoT. But that's way less likely.)</h2>
+				</section>
+
+				<section data-background-image="img/tweet-imani-barbarin.png" data-background-size="70% auto" data-background-color="#fff" data-background-position="top center">
+					<h2 class="offscreen"><a href="https://twitter.com/Imani_Barbarin/status/1279406399445966850">Tweet from Imani Barbarin, "Crutches and Spice"</a> that reads: "#AdaptTheFeed is about saying enough is enough. Disabled people saw how quickly the things we have been calling for were made available now that nondisabled people needed them."
+
+					"We want change now. You can commit to accessibility outside of a pandemic too, you know?"</h2>
+				</section>
+
+				<section>
+					<h2>“<a href="https://twitter.com/Imani_Barbarin/status/1279403117600223233">#AdaptTheFeed</a> is for the disability community and anyone committed to disability representation and inclusion.”</h2>
+
+					<blockquote><p>“Disabled people find themselves adapting to an inaccessible society constantly. So, now it’s your turn to adapt your content and social media feed to not only accommodate disabled people, but elevate our voices and include us in your work.” <br />-<a href="https://crutchesandspice.com/">Imani Barbarin</a></p></blockquote>
+				</section>
+
+				<section data-background-image="img/tweet-ej-mason.png" data-background-size="70% auto" data-background-color="#fff" data-background-position="top center">
+					<h2 class="offscreen"><a href="https://twitter.com/codeability/status/1298428296636403713">Tweet from EJ Mason</a> that reads: "Me: “Accessibility is so draining. I need to find rituals that help me de-stress and turn off my work brain™. I know: I’ll order myself delivery!”
+					Me, 5 minutes later: “DoorDash says keyboard users can get fucked, I guess.”</h2>
+				</section>
+
+				<section>
+					<h2>Accessibility is about supporting Disabled people first and foremost</h2>
+					<blockquote>
+						<p>“What disables people are the barriers that society creates for people with impairments”<br />
+						- <a href="https://www.allfie.org.uk/definitions/use-capital-d/">Alliance for Inclusive Education</a></p>
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Listen to diverse perspectives on <a href="https://twitter.com/hashtag/DisabilityTwitter">#DisabilityTwitter</a> <br />and not just <a href="https://twitter.com/hashtag/A11y">#A11y</a></h2>
+				</section>
+
+				<section>
+					<h2 class="h1-style">2. Laws and Guidelines</h2>
+				</section>
+
+				<section data-background-image="img/NFB-v-target.png">
+					<figure class="offscreen">
+						<h2>Wikipedia: National Federation of the Blind v. Target Corp.</h2>
+					</figure>
+				</section>
+
+				<section>
+					<h2 class="h1-style">The ADA and Section 508</h2>
+					<p><em>Enforcing users’ civil rights in the United States</em></p>
+					<aside class="notes">
+					ADA: regulations for businesses and State and local governments. Increasing DOJ involvement indicating online businesses as "public accommodations" 
+					Section 508 Amendment to the Rehabilitation Act of 1973: requires Federal agencies to make their electronic and information technology accessible to people with disabilities, when they develop, procure, maintain, or use electronic and information technology.
+					</aside>
+				</section>
+
+				<section>
+					<img data-src="img/structured-negotiation.jpg" alt="Structured Negotiation book" style="max-height: 700px">
+					<p><a href="https://www.lflegal.com/2020/07/ada30-update/" target="_blank">ADA 30 Legal Update from Lainey Feingold</a></p>
+				</section>
+
+				<section>
+					<h2>Global Accessibility Requirements</h2>
+					<ul style="max-width: 800px;">
+						<li>Accessible Canada Act</li>
+						<li>EU Accessibility Directive</li>
+						<li>Australia Disability Discrimination Act</li>
+						<li>Brazil Modelo de Acessibilidade de Governo Eletrônico</li>
+						<li>Equality Act in England, Scotland and Wales</li>
+						<li>India Rights of Persons with Disabilities Bill</li>
+						<li>Norway Anti-discrimination Accessibility Act</li>
+						<li>Israeli Standard 5568</li>
+					</ul>
+					<p>Learn more from <a href="https://www.lflegal.com/2013/05/gaad-legal/">Lainey Feingold</a></p>
+				</section>
+
+				<section data-background-image="img/wcag.png" data-background-position="left top">
+					<h2 class="offscreen">Web Content Accessibility Guidelines (WCAG) version 2.0</h2>
+				</section>
+
+				<section>
+					<h2 class="h1-style">WCAG 2.0</h2>
+					<figure>
+						<img src="img/wcag-pour.png" aria-labelledby="pour-principles" style="min-height: 400px;">
+						<ul class="offscreen" id="pour-principles">
+							<li>Perceivable</li>
+							<li>Operable</li>
+							<li>Understandable</li>
+							<li>Robust</li>
+						</ul>
+						<figcaption>Image credit: <a href="http://www.michaelgaigg.com/blog/2008/12/19/web-content-accessiblity-guidelines-wcag-20-overview-and-structure/">Michael Gaigg</a></figcaption>
+					</figure>
+				</section>
+
+				<section data-background-image="img/wcag-2.2.png" data-background-position="left top">
+					<h2 class="offscreen">Web Content Accessibility Guidelines (WCAG) version 2.2</h2>
+				</section>
+
+				<section>
+					<h2>About WCAG versions</h2>
+					<ul>
+						<li>WCAG 2.0 was published on 11 December 2008.</li>
+						<li>WCAG 2.1 was published on 5 June 2018.</li>
+						<li>WCAG 2.2 is scheduled to be published in 2021.</li>
+					</ul>
+					<p>Learn more from the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">W3C Web Accessibility Initiative</a></p>
+				</section>
+
+				<section data-transition="none" data-background-image="img/rover-accessibility-insights.jpg" data-background-size="contain" data-background-position="center top" data-background-color="#999">
+					<h2 class="offscreen">Rover.com with Accessibility Insights FastPass open</h2>
+				</section>
+
+				<section data-transition="none" data-background-image="img/rover-accessibility-insights-arrow.jpg" data-background-size="contain" data-background-position="center top" data-background-color="#999" data-transition="none">
+					<h2 class="offscreen">Rover.com with Accessibility Insights FastPass open and a pink arrow pointing to WCAG 1.4.3 for a color contrast violation</h2>
+				</section>
+
+				<section data-background-image="img/wcag-1.4.3.png" data-background-size="contain" data-background-color="white" data-background-position="left top">
+					<h2 class="offscreen">Understanding WCAG SC 1.4.3: Contrast (minimum)</h2>
+				</section>
+
+<!--				<section data-transition="none" data-background-image="img/zillow-axe.jpg" data-background-size="contain" data-background-position="center top" data-background-color="#999">
+					<h2 class="offscreen">Zillow homepage run through the aXe extension</h2>
+				</section>
+
+				<section data-transition="none" data-background-image="img/zillow-axe-arrow.jpg" data-background-size="contain" data-background-position="center top" data-background-color="#999">
+					<h2 class="offscreen">Zillow homepage with arrow over WCAG violations in the aXe extension</h2>
+				</section>
+
+				<section data-background-image="img/wcag-1.1.1.png" data-background-size="contain" data-background-color="white" data-background-position="left top">
+					<h2 class="offscreen">Understanding WCAG SC 1.1.1: Non-text Content</h2>
+
+					<aside class="notes">PERCEIVABLE</aside>
+				</section>
+
+				<section data-background-image="img/wcag-4.1.2.png" data-background-size="contain" data-background-color="white" data-background-position="left top">
+					<h2 class="offscreen">Understanding WCAG SC 4.1.2: Name, Role, Value</h2>
+
+					<aside class="notes">ROBUST.</aside>
+				</section>-->
+
+				<section data-background-image="img/perfect-lighthouse.jpg" data-background-size="cover" data-background-color="#efefef" data-background-position="left top">
+					<h2 class="offscreen">Manual Matuzovic: Building the most inaccessible site possible with a perfect Lighthouse score</h2>
+					<p style="background-color: white; max-width: 80%; margin-left: auto; margin-right: auto; padding: 0.5em;"><a href="https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/">https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/</a></p>
+				</section>
+
+				<section data-background-image="img/smashing-manual-a11y-testing.png" data-background-size="cover" data-background-color="#efefef" data-background-position="left top">
+					<h2 class="offscreen">Eric Bailey on Smashing Magazine: The Importance Of Manual Accessibility Testing</h2>
+					<p style="background-color: #333; max-width: 80%; margin-left: auto; margin-right: auto; padding: 0.5em;"><a href="https://www.smashingmagazine.com/2018/09/importance-manual-accessibility-testing/" style="color: white">https://www.smashingmagazine.com/2018/09/importance-manual-accessibility-testing/</a></p>
+				</section>
+
+		        <section>
+		          <h2 class="h1-style">3. Working in Accessibility or the Mainstream</h2>
+				</section>
+				
+				<section>
+					<h2>Accessibility Companies</h2>
+					<ul>
+						<li>Specialized products & services</li>
+						<li>Valuable internal knowledge</li>
+						<li>Company alignment on accessibility</li>
+						<li>Roles potentially less competitive</li>
+						<li>SMEs feel their dev skills atrophy</li>
+						<li>It’s a small world.</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>The Mainstream</h2>
+					<ul>
+						<li>Wider reaching products/services</li>
+						<li>Internal specialists, teams, or volunteers?</li>
+						<li>Company size, type, and culture can affect impact</li>
+						<li>Less company alignment on accessibility</li>
+						<li>Working though friction with carrots and sticks</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2><em>What do you want to do with your career?</em></h2>
+					<h2><em>What are your values?</em></h2>
+
+				</section>
+
+				<section>
+					<h2>No matter what:</h2>
+					<ul>
+						<li>Accessibility skills are highly employable</li>
+						<li>You can try different roles over time</li>
+						<li>Ask about salary ranges and levels</li>
+						<li>Talk to people who’ve worked at the company</li>
+						<li>Do work you can believe in with people you trust</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Bonus questions for you to steal</h2>
+					<p class="subhead">Things to ask people who’ve worked at a company you’re considering for an accessibility role. Use your best judgement based on their role/relationship to you (hiring manager, colleague/acquaintance, current or former employee, etc.)</p>
+					<div><span aria-label="Gift box" role="img">🎁</span></div>
+					<ul>
+						<li class="fragment">How are accessibility-impacting decisions made?</li>
+						<li class="fragment">How does accessibility fit into your roadmap/process?</li>
+						<li class="fragment">How are Disability representation and diversity at the company?</li>
+						<li class="fragment">What’s the path to promotion like for this role?</li>
+						<li class="fragment">What do you like about working there?</li>
+						<li class="fragment">What’s your least favorite part?</li>
+						<li class="fragment">What kind of friction do you encounter in your job?</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="h1-style">4. Testing often for user impact</h2>
+				</section>
+
+				<section>
+					<h2>We can remove barriers by making accessibility part of our web design and development workflow.</h2>
+					<h3 class="fragment subhead">Make it part of your <u>Definition of Done</u></h3>
+				</section>
+
+				<section data-background-image="img/forem-PR.png" data-background-size="contain" data-background-position="center top" data-background-color="white">
+					<h2 class="offscreen">Forem New Pull Request page on GitHub</h2>
+				</section>
+
+				<section>
+					<h3 class="h2-style">Supporting users</h3>
+					<ul class="larger">
+						<li>Start with accessibility basics</li>
+						<li>Use browser extensions and testing tools</li>
+						<li>Zoom and magnify layouts</li>
+						<li>Test with assistive technology</li>
+						<li>Bake accessibility into automated tests</li>
+						<li>Actually test accessibility use cases</li>
+					</ul>
+				</section>
+	
+				<section>
+					<h3 class="h2-style">Take the no-mouse challenge</h3>
+					<img data-src="img/nomouse500.png" class="plain" alt="" style="max-width: 400px;">
+					<p>Related: <a href="https://github.com/marcysutton/no-mouse-days">https://github.com/marcysutton/no-mouse-days</a></p>
+				</section>
+	
+				<section>
+					<h3 class="h2-style" style="margin-bottom: 0;">Test with Screen Readers</h3>
+					<p class="subhead"><a href="http://webaim.org/articles/screenreader_testing/">http://webaim.org/articles/screenreader_testing</a></p>
+					<ul class="larger">
+						<li>Windows: NVDA &amp; Firefox</li>
+						<li>OSX, iOS: Safari &amp; Voiceover</li>
+						<li>Android: TalkBack &amp; Firefox</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Hire people with disabilities to join your team.</h2>
+					<div class="fragment">
+						<h2>You can also work with:</h2>
+						<ul>
+							<li><a href="https://makeitfable.com">Fable</a></li>
+							<li><a href="https://www.access-works.knowbility.org/">Access Works</a></li>
+							<li>+ Groups local to your area</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="h1-style">
+						<span class="subhead">And remember:</span>
+						You are not the user</h2>
+					<p>Lack of representation leads to incorrect assumptions about what’s safe or intuitive</p>
+					<aside class="notes">
+					This leads to a strong bias and often ends in an inefficient design. Design to optimize the user experience for outsiders, not insiders.</aside>
+				</section>
+	
+				<section>
+					<h2 class="h1-style">5. Accessible doesn’t mean boring</h2>
+					<h3 class="subhead">But simpler is often better</h3>
+				</section>
+
+				<section data-background-image="img/a11ywins-a11yproject.png" data-background-size="contain" data-background-position="top center" data-background-color="white">
+					<h2 class="offscreen">Accessibility Wins showcasing the A11y Project Redesign</h2>
+				</section>
+
+		        <section>
+		        	<div>
+				        <h3 class="h2-style">Simplicity is intuitive</h3>
+				        <img data-src="img/dont-make-me-think.jpg" alt="Book: Don't Make me Think" style="max-height: 500px">
+				    </div>
+				</section>
+
+				<section>
+					<h3 class="h2-style" style="margin-bottom:0;">Ambiguous visual icons</h3>
+					<div style="margin-top:1em;">
+					  <div class="svg-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 32 32">
+						  <title>Floppy Disk</title>
+						  <path fill="#000" d="M28 0h-28v32h32v-28l-4-4zM16 4h4v8h-4v-8zM28 28h-24v-24h2v10h18v-10h2.343l1.657 1.657v22.343z"></path>
+						</svg>
+					  </div>
+					  <div class="svg-icon">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+						<title>Home</title>
+						<path fill="#000" d="M32 19l-6-6v-9h-4v5l-6-6-16 16v1h4v10h10v-6h4v6h10v-10h4z"></path>
+						</svg>
+					  </div>
+					  <div class="svg-icon">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+						  <title>Menu</title>
+						  <path fill="#000" d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
+						</svg>
+					  </div>
+					  <div class="svg-icon">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+						  <title>Stats</title>
+						  <path fill="#000" d="M0 26h32v4h-32zM4 18h4v6h-4zM10 10h4v14h-4zM16 16h4v8h-4zM22 4h4v20h-4z"></path>
+						</svg>
+					  </div>
+					  <div class="">
+						<div class="svg-icon fragment">Save</div>
+						<div class="svg-icon fragment">Home</div>
+						<div class="svg-icon fragment">Menu</div>
+						<div class="svg-icon fragment">Stats</div>
+					  </div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Cognitive complexity in Instagram</h2>
+					<img src="img/instagram-alt-text.png" alt="Instagram's alt text interface with the keyboard overlapping it and a high cognitive overhead" class="plain" style="height:900px" />
+				</section>  
+
+		        <section>
+			        <h2>There are established <br>UI patterns</h2>
+			        <h3 class="h4-style"><a href="https://www.w3.org/TR/wai-aria-practices/">https://www.w3.org/TR/wai-aria-practices/</a></h3>
+			        <aside class="notes">
+			        Starting here means you are more likely to be successful with minimal changes/compromises in the design to be made accessible. Design within constraints can be absolutely beautiful and accessible
+			        </aside>
+		        </section>
+			
+		    <section>
+				<h2>Prototype designs with code for accessibility</h2>
+				<h3 class="subhead h4-style">Save costs long-term by finding out what will be the most successful up front.</h3>
+			</section>
+
+			<section>
+				<h2>Consider input modalities in software architecture</h2>
+				<h3 class="subhead h4-style">Programmatic state changes instead of jQuery-style bound events can more easily enable:</h3>
+				<ul>
+					<li>Mouse pointer</li>
+					<li>Keyboard</li>
+					<li>Touch</li>
+					<li>Speech</li>
+					<li>Motion</li>
+					<li>Changes in ambient light</li>
+				</ul>
+				<p><a href="https://www.w3.org/WAI/WCAG21/Understanding/input-modalities">WCAG 2.5.x: Input Modalities</a></p>
+			</section>
+
+			<section>
+				<h2 class="h1-style">It’s about<br>User Experience.</h2>
+				<h3 class="subhead">Let’s make it better.</h3>
+  				<aside class="notes">
+  				  <h2>What else?</h2>
+	  			    <ul>
+	  			      <li>Feedback: hover/focus, updating widget instructions, external links, etc.</li>
+	  			      <li>Tab order</li>
+	  			      <li>Not trapping people in widgets they can’t get out of</li>
+	  				    <li>Touch: make sure your events work</li>
+	  			    </ul>
+				      <ul>
+	  				    <li>A whole other talk: How accessibility and automated testing are BFFs</li>
+	  			    </ul>
+			    </aside>
+			</section>
+
+			<section data-background-color="#ffffff" style="padding-top: 0;">
+				<h2 style="margin:0">Accessibility Resources</h2>
+				<ul class="resources" style="padding-bottom:1em;">
+					<li>A big ole resource list<br>
+						<a href="https://marcysutton.com/web-accessibility-resources">https://marcysutton.com/web-accessibility-resources</a>
+					</li>
+					<li>Smashing Magazine Accessibility Workshop - Nov. 2020<br><a href="https://smashingconf.com/online-workshops/workshops/marcy-sutton-nov">https://smashingconf.com/online-workshops/workshops/marcy-sutton-nov</a></li>
+					<li>Accessibility for Web Designers<br>
+						<a href="http://webaim.org/resources/designers/">http://webaim.org/resources/designers/</a>
+					</li>
+					<li>BBC Mobile Accessibility Guidelines<br>
+						<a href="http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile">http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile</a>
+					</li>
+					<li>Research on Accessible Client-side Routing<br><a href="https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/">https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/</a></li>
+					<li>Accessibility Wins Tumblr<br>
+						<a href="https://a11ywins.tumblr.com">https://a11ywins.tumblr.com</a>
+					</li>
+				</ul>
+			</section>
+
+			<section data-background-color="#ffffff">
+				<h2>Thank you, A11yNYC!</h2>
+				<h3 class="subhead">Twitter: <a href="http://twitter.com/marcysutton">@marcysutton</a></h3>
+				<h3 class="subhead">Github: <a href="http://github.com/marcysutton">@marcysutton</a></h3>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			width: 1440,
+		    height: 900,
+			margin: 0.1,
+			minScale: 0.2,
+		    maxScale: 1.0,
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/accessibility-helpers/accessibility-helpers.js', async: true}
+			]
+		});
+
+	</script>
+
+	</body>
+</html>
